@@ -4,6 +4,10 @@ set nocompatible
 "easy plugin management with pathogen
 call pathogen#infect()
 
+" Make sure we use a better leader key
+let mapleader = ","
+let g:mapleader = ","
+
 "filetype plugin indent on
 syntax enable
 set background=dark
@@ -44,9 +48,16 @@ set viminfo+=r/tmp " don't save info for temp files
 
 set laststatus=2   " always show status line
 set hlsearch       " highlight searches
-"set statusline=CWD:%{CurDir()}\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %h%m%r%y%=%#statuslineerr#%t%*\ %c,%l/%L\ %P\ %#statuslineerr#%{SyntasticStatuslineFlag()}%*
-set statusline=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]\ %h%m%r%y%=%#statuslineerr#%t%*\ %c,%l/%L\ %P\ %#statuslineerr#%{SyntasticStatuslineFlag()}%*
 
+" Make sure we use a better leader key
+let mapleader = ","
+let g:mapleader = ","
+
+" Pytest leader mappings
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
+"nmap <silent><Leader>c <Esc>:Pytest class<CR>
+map <F3> :Pytest session<CR>
 
 " replace tabs with 4 spaces in python source files only
 au FileType python setl sw=4 sts=4 et
