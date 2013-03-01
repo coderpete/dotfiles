@@ -1,10 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/pchudykowski/env/pecan-env/pecan/weather/weather/model'
-let g:netrw_dirhist_2='/Users/pchudykowski/env/pecan-env/pecan/weather/weather/tests'
-let g:netrw_dirhist_3='/Users/pchudykowski/env/pecan-env/pecan/gir/gir/templates'
-let g:netrw_dirhist_4='/Users/pchudykowski/VENVS/dhs/signup/ndn_signup/tests'
-let g:netrw_dirhist_5='/Users/pchudykowski/VENVS/dhs/signup/ndn_signup'
-let g:netrw_dirhist_6='/Users/pchudykowski/VENVS/dhs/signup/ndn_signup/tests'
-let g:netrw_dirhist_7='/Users/pchudykowski/VENVS/dhs/signup/ndn_signup/tests/lib'
-let g:netrw_dirhist_8='/Users/pchudykowski/VENVS/tg_signup/tools'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/pchudykowski/VENVS/s/signup/ndn/signup/public/js'
+let g:netrw_dirhist_2='/Users/pchudykowski/VENVS/s/signup/ndn/signup/public/js/steps'
+let g:netrw_dirhist_3='/Users/pchudykowski/VENVS/s/signup/ndn/signup/api'

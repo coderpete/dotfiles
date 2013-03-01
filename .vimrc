@@ -39,7 +39,7 @@ set backspace=indent,eol,start
 " the following settings are controversial!
 set expandtab      " expand tabs into spaces 'set noet' to disable
 set softtabstop=4  " 'set sts=' to disable
-set shiftwidth=4   " 'set sw=' to disable 
+set shiftwidth=4   " 'set sw=' to disable
 
 set history=100    " command/search/input history size
 set viminfo+=%     " restore buffer list if zvim is launched without a file arg
@@ -60,7 +60,10 @@ nmap <silent><Leader>m <Esc>:Pytest method<CR>
 map <F3> :Pytest session<CR>
 
 " replace tabs with 4 spaces in python source files only
-au FileType python setl sw=4 sts=4 et
+"au FileType python setl sw=4 sts=4 et
+
+" do not expand tabs for perl source files
+autocmd FileType perl setlocal noet
 
 " syntax highlight mako files with html highlighting
 filetype on
@@ -82,3 +85,12 @@ let SVNCommandNameResultBuffers=1
 autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 autocmd BufRead *.java set include=^#\s*import
 
+" Mouse support that keeps the fast scroll wheel speed.
+set mouse=a
+set ttymouse=xterm2
+map <MouseUp> 12j
+map <MouseDown> 12k
+map <MiddleMouse> <Nop>
+imap <MouseUp> <C-O>12j
+imap <MouseDown> <C-O>12k
+imap <MiddleMouse> <Nop>
