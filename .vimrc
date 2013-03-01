@@ -68,6 +68,7 @@ autocmd FileType perl setlocal noet
 " syntax highlight mako files with html highlighting
 filetype on
 au BufNewFile,BufRead *.mak set filetype=html
+au BufRead,BufNewFile */ndn/*{perl,dh,templates}*/*.{tp,html,panel} set filetype=dhtmpl
 
 "for taglist: http://vim-taglist.sourceforge.net/installation.html
 let Tlist_Inc_Winwidth = 0
