@@ -11,8 +11,9 @@ let g:mapleader = ","
 "filetype plugin indent on
 syntax enable
 set background=dark
-let g:solarized_termcolors=16
+let g:solarized_termcolors=256
 colorscheme solarized
+"colorscheme wombat
 
 " syntastic settings
 let g:syntastic_enable_signs=1
