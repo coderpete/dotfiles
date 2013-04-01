@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 b5725c1eec2f596a8e1f6295a4640b2392e5e550 Pete Chudykowski <pete.chudykowski@dreamhost.com> 1346798647 -0700	clone: from git://github.com/tpope/vim-fugitive.git
+b5725c1eec2f596a8e1f6295a4640b2392e5e550 0103538d7a8e03c061c031e33459aeaa4cf040ab Pete Chudykowski <pete.chudykowski@dreamhost.com> 1362765210 -0800	rebase finished: refs/heads/master onto 0103538d7a8e03c061c031e33459aeaa4cf040ab
+0103538d7a8e03c061c031e33459aeaa4cf040ab f6d93b8788b57990a2669b2408004c0086d6a878 Pete Chudykowski <pete.chudykowski@dreamhost.com> 1364858036 -0700	pull: Fast-forward
