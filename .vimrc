@@ -1,5 +1,6 @@
 " IMPORTANT! don't be backward-compatible with unix vi
 set nocompatible
+syntax enable
 
 "easy plugin management with pathogen
 call pathogen#infect()
@@ -8,13 +9,13 @@ call pathogen#infect()
 let mapleader = ","
 let g:mapleader = ","
 
-"filetype plugin indent on
-syntax enable
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
+" colorscheme
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 "colorscheme wombat
-colorscheme zenburn
+"colorscheme zenburn
 
 " syntastic settings
 let g:syntastic_enable_signs=1
