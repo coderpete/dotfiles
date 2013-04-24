@@ -11,11 +11,11 @@ let g:mapleader = ","
 
 " colorscheme
 set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+"set background=dark
+"let g:solarized_termcolors=256
+"colorscheme solarized
 "colorscheme wombat
-"colorscheme zenburn
+colorscheme zenburn
 
 " syntastic settings
 let g:syntastic_enable_signs=1

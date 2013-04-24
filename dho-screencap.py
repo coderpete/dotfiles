@@ -15,8 +15,9 @@ import boto.s3.connection
 
 
 # configuration
-dho_access_key = 'PASTE_YOUR_S3_PUBLIC_KEY'
-dho_secret_key = 'PASTE_YOUR_S3_SECRET_KEY'
+f = open('.dho_access_key', 'r')
+dho_access = f.readlines
+[dho_access_key, dho_secret_key] = [l.strip() for l in f.readlines()]
 dho_screenshots_bucket = 'screencapture'
 
 # other variables
