@@ -5,6 +5,7 @@ Integrates Mac OS X's screenshot utility with DreamObjects for easy sharing.
 '''
 
 from datetime import datetime
+from uuid import uuid4
 
 import os
 import subprocess
@@ -13,17 +14,25 @@ import webbrowser
 import boto
 import boto.s3.connection
 
+cname = 'snap.coderpete.net'
 
 # configuration
 f = open('.dho_access', 'r')
 dho_access = f.readlines
 [dho_access_key, dho_secret_key] = [l.strip() for l in f.readlines()]
 dho_screenshots_bucket = 'screencapture'
+# why isn't the bucket in the config ya big dummy??
 
 # other variables
-filename = datetime.strftime(datetime.now(), '%m-%d-%Y-%H-%M-%S') + '.png'
+now = datetime.now()
+this_month = datetime.strftime(now, '%Y%m')
+tstamp = datetime.strftime(datetime.now(), '%d%H%M%S')
+
+filename = this_month + '/' + tstamp + '_' + str(uuid4())[-4:] + '.png'
 
 # start interactive screen capture
+if not os.path.exists('/tmp/' + this_month):
+    os.mkdir('/tmp/' + this_month)
 subprocess.call(['screencapture', '-i', '/tmp/%s' % filename])
 
 print 'Screenshot captured! Copying to DreamObjects...'
@@ -39,10 +48,12 @@ key = bucket.new_key(filename)
 key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
 key.set_canned_acl('public-read')
 
-public_url = key.generate_url(0, query_auth=False, force_http=True)
+public_url = cname + '/' + filename
+# or if you don't have a cname
+#public_url = key.generate_url(0, query_auth=False, force_http=True)
 
 print 'Screenshot available at:'
 print '\t', public_url
 
 os.system('echo "%s" | pbcopy' % public_url)
-webbrowser.open_new_tab(public_url)
+webbrowser.open_new_tab('http://' + public_url)
