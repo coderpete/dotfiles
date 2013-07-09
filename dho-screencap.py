@@ -19,9 +19,13 @@ cname = 'snap.coderpete.net'
 # configuration
 f = open('.dho_access', 'r')
 dho_access = f.readlines
-[dho_access_key, dho_secret_key] = [l.strip() for l in f.readlines()]
-dho_screenshots_bucket = 'screencapture'
-# why isn't the bucket in the config ya big dummy??
+[
+    dho_access_key,
+    dho_secret_key,
+    dho_screenshots_bucket
+] = [
+    l.strip() for l in f.readlines()
+]
 
 # other variables
 now = datetime.now()
@@ -55,5 +59,5 @@ public_url = cname + '/' + filename
 print 'Screenshot available at:'
 print '\t', public_url
 
-os.system('echo "%s" | pbcopy' % public_url)
+os.system('echo "http://%s" | pbcopy' % public_url)
 webbrowser.open_new_tab('http://' + public_url)
