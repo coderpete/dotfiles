@@ -14,7 +14,6 @@ import webbrowser
 import boto
 import boto.s3.connection
 
-cname = 'snap.coderpete.net'
 
 # configuration
 f = open('.dho_access', 'r')
@@ -22,7 +21,8 @@ dho_access = f.readlines
 [
     dho_access_key,
     dho_secret_key,
-    dho_screenshots_bucket
+    dho_screenshots_bucket,
+    cname
 ] = [
     l.strip() for l in f.readlines()
 ]
@@ -52,12 +52,14 @@ key = bucket.new_key(filename)
 key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
 key.set_canned_acl('public-read')
 
-public_url = cname + '/' + filename
-# or if you don't have a cname
-#public_url = key.generate_url(0, query_auth=False, force_http=True)
+public_url = ''
+if cname is None:
+    public_url = 'http://' + cname + '/' + filename
+else:
+    public_url = key.generate_url(0, query_auth=False, force_http=True)
 
 print 'Screenshot available at:'
 print '\t', public_url
 
-os.system('echo "http://%s" | pbcopy' % public_url)
-webbrowser.open_new_tab('http://' + public_url)
+os.system('echo "%s" | pbcopy' % public_url)
+webbrowser.open_new_tab(public_url)
