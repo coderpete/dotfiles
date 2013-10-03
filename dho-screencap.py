@@ -35,20 +35,22 @@ tstamp = datetime.strftime(datetime.now(), '%d%H%M%S')
 filename = this_month + '/' + tstamp + '_' + str(uuid4())[-4:] + '.png'
 
 # start interactive screen capture
+print 'Capturing screenshot...'
 if not os.path.exists('/tmp/' + this_month):
     os.mkdir('/tmp/' + this_month)
 subprocess.call(['screencapture', '-i', '/tmp/%s' % filename])
 
-print 'Screenshot captured! Copying to DreamObjects...'
-
+print 'Connecting to DreamObjects...'
 connection = boto.connect_s3(
     aws_access_key_id=dho_access_key,
     aws_secret_access_key=dho_secret_key,
     host='objects.dreamhost.com'
 )
 
+print 'Getting target bucket...'
 bucket = connection.get_bucket(dho_screenshots_bucket)
 key = bucket.new_key(filename)
+print 'Uploading to DreamObjects...'
 key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
 key.set_canned_acl('public-read')
 
@@ -61,5 +63,7 @@ else:
 print 'Screenshot available at:'
 print '\t', public_url
 
+print 'Copying url to clipboard...'
 os.system('echo "%s" | pbcopy' % public_url)
+print 'Opening in browser...'
 webbrowser.open_new_tab(public_url)
