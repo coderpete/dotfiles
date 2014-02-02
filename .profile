@@ -18,8 +18,8 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
 ## prompt
-#PS1='[\u@\h:\w]$ '
-PS1='\[\033[01;31m\]\u\[\033[00m\]\[\033[01;32m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[01;31m\]\$\[\033[00m\] \[\033[01;33m\]\]\]\]\]\]\]\]\]\]'
+PS1='[\u@\h:\w]$ '
+#PS1='\[\033[01;31m\]\u\[\033[00m\]\[\033[01;32m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[01;31m\]\$\[\033[00m\] \[\033[01;33m\]\]\]\]\]\]\]\]\]\]'
 
 ## mybins
 export PATH=/usr/local/bin:${PATH}:/Users/pchudykowski/bin:/usr/local/mysql/bin:/Users/pchudykowski/src/sh
