@@ -11,9 +11,6 @@ alias yakko='ssh petec@yakko.sd.dreamhost.com'
 alias fubar='ssh petec@fubar.dreamhost.com'
 alias regor='ssh coderpete@regor.dreamhost.com'
 
-## pycow
-alias cowsay='python ~/src/py/cowsay.py';
-
 ## Arrow key history autocomplete
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
@@ -34,5 +31,3 @@ fi
 ## virtualenv stuffs
 export WORKON_HOME=~/VENVS
 source /usr/local/bin/virtualenvwrapper.sh
-
-cowsay 'oh hi'
