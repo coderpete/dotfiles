@@ -1,6 +1,7 @@
 ## aliases
 alias edit='vim -N'
 alias ll='ls -laG'
+alias murder='kill -9'
 
 ## places
 alias ndn='cd ~/git/ndn/perl';
@@ -23,6 +24,12 @@ PS1='[\u@\h:\w]$ '
 
 ## mybins
 export PATH=/usr/local/bin:${PATH}:/Users/pchudykowski/bin:/usr/local/mysql/bin:/Users/pchudykowski/src/sh
+
+## unfuck pip in osx
+if [ $(uname -s) = 'Darwin' ]; then
+    export CFLAGS=-Qunused-arguments
+    export CPPFLAGS=-Qunused-arguments
+fi
 
 ## virtualenv stuffs
 export WORKON_HOME=~/VENVS

@@ -55,7 +55,7 @@ key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
 key.set_canned_acl('public-read')
 
 public_url = ''
-if cname is None:
+if cname is not None:
     public_url = 'http://' + cname + '/' + filename
 else:
     public_url = key.generate_url(0, query_auth=False, force_http=True)
