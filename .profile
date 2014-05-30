@@ -1,7 +1,12 @@
 ## aliases
 alias edit='vim -N'
-alias ll='ls -laG'
 alias murder='kill -9'
+
+if [ "$(uname)" == "Darwin" ]; then
+    alias ll='ls -laG'
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    alias ll='ls -la --color=auto'
+fi
 
 ## places
 alias ndn='cd ~/git/ndn/perl';
