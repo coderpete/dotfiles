@@ -17,15 +17,12 @@ import boto.s3.connection
 
 # configuration
 f = open('.dho_access', 'r')
-dho_access = f.readlines
-[
-    dho_access_key,
-    dho_secret_key,
-    dho_screenshots_bucket,
-    cname
-] = [
-    l.strip() for l in f.readlines()
-]
+# required
+dho_access_key = f.readline().strip()
+dho_secret_key = f.readline().strip()
+dho_screenshots_bucket = f.readline().strip()
+# optional
+cname = f.readline().strip()
 
 # other variables
 now = datetime.now()
@@ -55,10 +52,10 @@ key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
 key.set_canned_acl('public-read')
 
 public_url = ''
-if cname is not None:
-    public_url = 'http://' + cname + '/' + filename
-else:
+if cname == '':
     public_url = key.generate_url(0, query_auth=False, force_http=True)
+else:
+    public_url = 'http://' + cname + '/' + filename
 
 print 'Screenshot available at:'
 print '\t', public_url
