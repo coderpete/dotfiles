@@ -11,6 +11,9 @@ import os
 import subprocess
 import webbrowser
 
+import urllib2
+import json
+
 import boto
 import boto.s3.connection
 
@@ -29,7 +32,7 @@ now = datetime.now()
 this_month = datetime.strftime(now, '%Y%m')
 tstamp = datetime.strftime(datetime.now(), '%d%H%M%S')
 
-filename = this_month + '/' + tstamp + '_' + str(uuid4())[-4:] + '.png'
+filename = this_month + '/' + tstamp + '_' + str(uuid4()) + '.png'
 
 # start interactive screen capture
 print 'Capturing screenshot...'
@@ -49,18 +52,17 @@ bucket = connection.get_bucket(dho_screenshots_bucket)
 key = bucket.new_key(filename)
 print 'Uploading to DreamObjects...'
 key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
-key.set_canned_acl('public-read')
+key.set_canned_acl('private')
 
-public_url = ''
-if cname == '':
-    public_url = key.generate_url(0, query_auth=False, force_http=True)
-else:
-    public_url = 'http://' + cname + '/' + filename
-
+signed_url = key.generate_url(
+    expires_in=1800,
+    query_auth=True,
+    force_http=True
+)
 print 'Screenshot available at:'
-print '\t', public_url
+print '\t', signed_url
 
 print 'Copying url to clipboard...'
-os.system('echo "%s" | pbcopy' % public_url)
+os.system('echo "%s" | pbcopy' % signed_url)
 print 'Opening in browser...'
-webbrowser.open_new_tab(public_url)
+webbrowser.open_new_tab(signed_url)

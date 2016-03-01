@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>346</string>
+	<string>381</string>
 	<key>AMApplicationVersion</key>
-	<string>2.3</string>
+	<string>2.4</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -95,6 +95,8 @@
 				</array>
 				<key>OutputUUID</key>
 				<string>53016B18-CFB2-421D-B327-F27FEDFE2224</string>
+				<key>ShowWhenRun</key>
+				<false/>
 				<key>UUID</key>
 				<string>7720FF1D-8F17-4104-986F-CCB3633AEBAE</string>
 				<key>UnlocalizedApplications</key>
