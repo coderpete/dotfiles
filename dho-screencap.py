@@ -55,7 +55,7 @@ key.set_contents_from_file(open('/tmp/%s' % filename, 'rb'))
 key.set_canned_acl('private')
 
 signed_url = key.generate_url(
-    expires_in=1800,
+    expires_in=60*60*3,
     query_auth=True,
     force_http=True
 )

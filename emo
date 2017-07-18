@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+'''
+Spells out common emoji combinations.
+'''
+
+from os import system
+import sys
+
+emo = 'unknown';
+if len(sys.argv) > 1:
+    emo = sys.argv[1]
+
+emos = {
+    'hearts': ':heart::heart::heart::heart::heart::heart:',
+    'love': ':dog::heart::heart::heart::rabbit::kissing_heart::kissing_heart::kissing_heart:',
+    'morning': 'Good morning my gummi angel :dog::heart::heart::heart::rabbit:',
+    'day': 'How is your day going my love? :dog::heart::rabbit::kissing_heart::kissing_heart:',
+    'drive': 'Drive safe my love :rabbit::car::heart::heart::house_with_garden::dog::dog2::dog2::kissing_heart::kissing_heart::kissing_heart:'
+}
+
+if emos.has_key(emo):
+    print emos[emo]
+    system('echo "%s" | pbcopy' % emos[emo])
+else:
+    print "\n"
+    for k, v in emos.items():
+        print "%s: %s" % (k,v);
+    print "\n"

@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/pchudykowski/VENVS/s/signup/ndn/signup/public/js'
-let g:netrw_dirhist_2='/Users/pchudykowski/VENVS/s/signup/ndn/signup/public/js/steps'
-let g:netrw_dirhist_3='/Users/pchudykowski/VENVS/s/signup/ndn/signup/api'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/coderpete/git/ndn-signup/scripts'
+let g:netrw_dirhist_2='/Users/coderpete/git/ndn-signup/ndn/signup/controllers'
+let g:netrw_dirhist_3='/Users/coderpete/git/ndn-signup/ndn/signup/forms'
+let g:netrw_dirhist_4='/Users/coderpete/git/ndn-signup/ndn/signup/controllers'
+let g:netrw_dirhist_5='/Users/coderpete/git/ndn/perl/Ndn/Registrar'
+let g:netrw_dirhist_6='/Users/coderpete/git/ndn/perl/Ndn/Signup/API'

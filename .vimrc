@@ -67,6 +67,7 @@ map <F3> :Pytest session<CR>
 
 " do not expand tabs for perl source files
 autocmd FileType perl setlocal noet
+autocmd FileType javascript setlocal noet
 
 " syntax highlight mako files with html highlighting
 filetype on
@@ -88,13 +89,3 @@ let SVNCommandNameResultBuffers=1
 :map \pt :%!perltidy -q<CR>
 autocmd BufRead *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 autocmd BufRead *.java set include=^#\s*import
-
-" Mouse support that keeps the fast scroll wheel speed.
-set mouse=a
-set ttymouse=xterm2
-map <MouseUp> 12j
-map <MouseDown> 12k
-map <MiddleMouse> <Nop>
-imap <MouseUp> <C-O>12j
-imap <MouseDown> <C-O>12k
-imap <MiddleMouse> <Nop>
