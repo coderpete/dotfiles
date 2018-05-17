@@ -10,13 +10,19 @@ fi
 
 ## places
 alias ndn='cd ~/git/ndn/perl';
+alias remix='cd ~/git/remix-theme-editor';
+alias signup='cd ~/git/ndn-signup/ndn/signup';
+alias guten="cd ~/git/gutenberg-remixer-blocks/";
 
-## machines
+## ssh stuff
+#### identity
+ssh-add ~/.ssh/github_rsa
+#### machines
 alias yakko='ssh petec@yakko.sd.dreamhost.com'
 alias fubar='ssh petec@fubar.dreamhost.com'
 alias tarfu='ssh petec@tarfu.dreamhost.com'
 alias regor='ssh coderpete@regor.dreamhost.com'
-alias plex='ssh coderpete@192.168.1.11'
+alias plex='ssh coderpete@192.168.1.5'
 
 ## dhc instances
 alias chd='mosh dhc-user@208.113.176.173'
@@ -35,10 +41,13 @@ PS1='[\u@\h:\w]$ '
 ## mybins
 export PATH=/usr/local/bin:${HOME}/bin:/usr/local/mysql/bin:${HOME}/src/sh:${HOME}/git/ndn/bin:${PATH}
 
-## unfuck pip in osx
+## OSX
 if [ $(uname -s) = 'Darwin' ]; then
+    # unfuck pip
     export CFLAGS=-Qunused-arguments
     export CPPFLAGS=-Qunused-arguments
+    # stop the annoying bouncing icons in the Dock
+    alias nobounce='defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock'
 fi
 
 ## vagrant shorthands
@@ -47,3 +56,21 @@ alias vrebuild='vagrant destroy && vagrant up'
 ## virtualenv stuffs
 export WORKON_HOME=~/VENVS
 #source /usr/local/bin/virtualenvwrapper.sh
+
+## perl stuff
+export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
+alias perl='perl -Mv5.10';
+
+## git stuff
+alias ggrep='git grep -n'
+
+## docker/remixer stuff
+alias dc='docker-compose';
+alias dcup='docker-compose up -d';
+alias dcstart='docker-compose start';
+alias dcstop='docker-compose stop';
+alias dcdown='docker-compose down';
+alias dcl='docker-compose logs';
+alias dclf='docker-compose logs -f';
+alias dstat='docker stats';
+alias wp="docker-compose run --rm wpcli"

@@ -13,10 +13,10 @@ if len(sys.argv) > 1:
 
 emos = {
     'hearts': ':heart::heart::heart::heart::heart::heart:',
-    'love': ':dog::heart::heart::heart::rabbit::kissing_heart::kissing_heart::kissing_heart:',
-    'morning': 'Good morning my gummi angel :dog::heart::heart::heart::rabbit:',
-    'day': 'How is your day going my love? :dog::heart::rabbit::kissing_heart::kissing_heart:',
-    'drive': 'Drive safe my love :rabbit::car::heart::heart::house_with_garden::dog::dog2::dog2::kissing_heart::kissing_heart::kissing_heart:'
+    'love': ':dog::heart::heart::heart::rabbit2::kissing_heart::kissing_heart::kissing_heart:',
+    'morning': 'Good morning my gummi angel :dog::heart::heart::heart::rabbit2:',
+    'day': 'How is your day going my love? :dog::heart::rabbit2::kissing_heart::kissing_heart:',
+    'drive': 'Drive safe my love :dog::heart::rabbit2::heart::heart::car::house_with_garden::dog::dog2::dog2::kissing_heart::kissing_heart::kissing_heart:'
 }
 
 if emos.has_key(emo):

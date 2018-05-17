@@ -20,6 +20,15 @@
 	br = branch
 	st = status
 
+    ;git check - runs `perl -cw` on changed files inside LDE.
+    check  = !ndn-lde check $(git ls-files -m)
+
+    ;git stashenv
+    stashenv = "!f() { git stash save -u conf; }; f"
+
+    ;git setenv - apply stash with develpment environment dev changes
+    setenv = "!f() { git stash apply stash^{/conf}; }; f"
+
 	;review = "!review() { branch=$1; [ -z $branch ] && branch=master; git push origin HEAD:refs/for/$branch; }; review"
 
 	; git review [branch_for_review]
@@ -103,3 +112,8 @@
 		git push origin $branch_from:refs/heads/$new_branch;\
 	};\
 	create_branch"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
