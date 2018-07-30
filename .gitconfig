@@ -20,6 +20,50 @@
 	br = branch
 	st = status
 
+	; git dev <new_branch>
+	; automatically set up a new branch at origin and a local
+	; branch of the same name tracking its remote counterpart
+	; switch to the new branch
+	dev = "!dev() {\
+		newbranch=$1;\
+		[ -z $newbranch ] && echo \"Specify a branch\" && exit 1;\
+		\
+		echo "" && echo \"checking out master...\";\
+		git checkout master;\
+		rc=$?;\
+		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
+		\
+		echo "" && echo \"updating master...\";\
+		git pull --rebase;\
+		rc=$?;\
+		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
+		\
+		echo "" && echo \"branching into $newbranch from master...\";\
+		git checkout -b $newbranch;\
+		rc=$?;\
+		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
+		\
+		echo "" && echo \"creating $newbranch on remote...\";\
+		git push origin $newbranch;\
+		rc=$?;\
+		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
+		\
+		echo "" && echo \"setting $newbranch to track remote...\";\
+		git branch -u origin/$newbranch;\
+		rc=$?;\
+		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
+		\
+		echo "" && echo \"All done. You should be in $newbranch now.\";\
+		echo \"+ git status\";\
+		git status;\
+		echo \"+ git branch -a | grep $newbranch\";\
+		git branch -a | grep $newbranch;\
+		\
+		echo "" && echo \"Do your DEVest!\";\
+	};\
+	dev"
+
+
 	; Useful aliases for Gerrit courtesy of Stephon Striplin
 
 	; git review [branch_for_review]
