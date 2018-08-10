@@ -16,13 +16,16 @@ alias guten="cd ~/git/gutenberg-remixer-blocks/";
 
 ## ssh stuff
 #### identity
+eval `ssh-agent -s`
 ssh-add ~/.ssh/github_rsa
+ssh-add ~/.ssh/plex_rsa
+
 #### machines
 alias yakko='ssh petec@yakko.sd.dreamhost.com'
-alias fubar='ssh petec@fubar.dreamhost.com'
 alias tarfu='ssh petec@tarfu.dreamhost.com'
+alias fubar='tarfu'
 alias regor='ssh coderpete@regor.dreamhost.com'
-alias plex='ssh coderpete@192.168.1.5'
+alias plex='ssh coderpete@plex.coderpete.io'
 alias spacedock='ssh coderpete@alphasite.edolnx.net -p 2204'
 
 ## dhc instances
@@ -62,12 +65,18 @@ export WORKON_HOME=~/VENVS
 export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
 alias perl='perl -Mv5.10';
 
+## python stuff
+alias pep8='pycodestyle'
+
 ## git stuff
 alias ggrep='git grep -n'
 
 ## docker/remixer stuff
+alias dcprep='sudo ifconfig lo0 alias 127.0.0.2 up'
+alias dcroute='sudo route add -host 66.33.205.240 10.5.69.1 && echo "!!!!!! RESTART TUNNELBLICK !!!!!!!"'
 alias dc='docker-compose';
-alias dcup='docker-compose up -d';
+alias dccheck='ping -c1 66.33.205.240 && ifconfig | grep 127.0.0.2 && echo "ALL GOOD!"';
+alias dcup='dccheck && docker-compose up -d';
 alias dcstart='docker-compose start';
 alias dcstop='docker-compose stop';
 alias dcdown='docker-compose down';
