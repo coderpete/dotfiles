@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/coderpete/git/remix-theme-editor/settings/development'
 let g:netrw_dirhist_2='/Users/coderpete/git/gutenberg-remixer-blocks/src/photo'
+let g:netrw_dirhist_3='/Users/coderpete/git/ndn/perl/Ndn/API2/Command/Signup'
+let g:netrw_dirhist_4='/Users/coderpete/git/ndn/perl/Ndn/PSGI/Server'
+let g:netrw_dirhist_5='/Users/coderpete/git/remix-theme-editor/python_app/remixer/utils'
