@@ -20,7 +20,7 @@
 	br = branch
 	st = status
 
-	; git dev <new_branch>
+	; git dev <new_branch> [branch_from | default:master]
 	; automatically set up a new branch at origin and a local
 	; branch of the same name tracking its remote counterpart
 	; switch to the new branch
