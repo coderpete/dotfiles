@@ -26,19 +26,21 @@
 	; switch to the new branch
 	dev = "!dev() {\
 		newbranch=$1;\
+		frombranch=$2;\
 		[ -z $newbranch ] && echo \"Specify a branch\" && exit 1;\
+		[ -z $frombranch ] && frombranch='master' && echo \"Branching from $frombranch\" && exit 1;\
 		\
-		echo "" && echo \"checking out master...\";\
-		git checkout master;\
+		echo "" && echo \"checking out $frombranch...\";\
+		git checkout $frombranch;\
 		rc=$?;\
 		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
 		\
-		echo "" && echo \"updating master...\";\
+		echo "" && echo \"updating $frombranch...\";\
 		git pull --rebase;\
 		rc=$?;\
 		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
 		\
-		echo "" && echo \"branching into $newbranch from master...\";\
+		echo "" && echo \"branching into $newbranch from $frombranch...\";\
 		git checkout -b $newbranch;\
 		rc=$?;\
 		[ $rc != 0 ] && echo \"ERROR: $rc\" && exit $rc;\
@@ -143,3 +145,5 @@
 		git push origin $branch_from:refs/heads/$new_branch;\
 	};\
 	create_branch"
+[push]
+	default = simple
