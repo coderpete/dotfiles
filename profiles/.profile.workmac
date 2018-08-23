@@ -31,7 +31,6 @@ alias spacedock='ssh coderpete@alphasite.edolnx.net -p 2204'
 
 ## dhc instances
 alias hoth='ssh -i ~/.ssh/dhc_inst.pem ubuntu@208.113.130.155'
-alias media='ssh dhc-user@208.113.131.74'
 alias chd='mosh dhc-user@208.113.176.173'
 alias trusty='ssh dhc-user@208.113.176.16'
 alias qnapapi='mosh dhc-user@208.113.176.89'
