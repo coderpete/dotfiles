@@ -73,6 +73,7 @@ autocmd FileType javascript setlocal noet
 filetype on
 au BufNewFile,BufRead *.mak set filetype=html
 au BufRead,BufNewFile */ndn/*{perl,dh,templates}*/*.{tp,html,panel} set filetype=dhtmpl
+au BufRead,BufNewFile *.t set filetype=perl
 
 "for taglist: http://vim-taglist.sourceforge.net/installation.html
 let Tlist_Inc_Winwidth = 0
