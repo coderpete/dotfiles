@@ -28,7 +28,7 @@
 		newbranch=$1;\
 		frombranch=$2;\
 		[ -z $newbranch ] && echo \"Specify a branch\" && exit 1;\
-		[ -z $frombranch ] && frombranch='master' && echo \"Branching from $frombranch\" && exit 1;\
+		[ -z $frombranch ] && frombranch='master' && echo \"Branching from $frombranch\";\
 		\
 		echo "" && echo \"checking out $frombranch...\";\
 		git checkout $frombranch;\
