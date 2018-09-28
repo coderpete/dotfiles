@@ -11,6 +11,7 @@ fi
 ## places
 alias ndn='cd ~/git/ndn/perl';
 alias remix='cd ~/git/remix-theme-editor';
+alias dpsignup='cd ~/git/signup-js';
 alias signup='cd ~/git/ndn-signup/ndn/signup';
 alias guten="cd ~/git/gutenberg-remixer-blocks/";
 
@@ -39,6 +40,9 @@ alias qnapapi='mosh dhc-user@208.113.176.89'
 ## Arrow key history autocomplete
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+
+## Shorthands
+alias grephistory='history | grep'
 
 ## prompt
 PS1='[\u@\h:\w]$ '
