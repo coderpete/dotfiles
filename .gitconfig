@@ -20,6 +20,11 @@
     br = branch
     st = status
 
+    ; TBI
+    ; alias to delete all local branches that track
+    ; remote branches that no longer exist.
+
+
     ; git dev <new_branch> [branch_from | default:master]
     ; get yourself a dev branch.
     ; if <new_branch> already exists at origin,
