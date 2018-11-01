@@ -17,6 +17,7 @@ alias guten="cd ~/git/gutenberg-remixer-blocks/";
 
 ## ssh stuff
 #### identity
+alias ssh-ident="eval `ssh-agent -s` && ssh-add";
 eval `ssh-agent -s`
 ssh-add ~/.ssh/github_rsa
 ssh-add ~/.ssh/plex_rsa
