@@ -20,20 +20,30 @@
     br = branch
     st = status
 
-    ; TBI
-    ; alias to delete all local branches that track
-    ; remote branches that no longer exist.
+    ; TBI:
+    ; `git trim` - maintain your tree: trim old branches!
+    ;   Delete all local branches which track branches that
+    ;   no longer exist on remote.
+    trim = "!trim() {\
+        echo "" && echo \"To Be Implemented\" && echo "";\
+    };\
+    trim"
 
-
-    ; git dev <new_branch> [branch_from | default:master]
-    ; get yourself a dev branch.
-    ; if <new_branch> already exists at origin,
-    ;   create a local branch tracking the remote one.
-    ; if it does not,
-    ;   create a new branch at origin
+    ; `git dev` - a shortcut to your dev branch.
+    ;
+    ; USAGE:
+    ;   git dev <new_branch> [branch_from | default:master]
+    ;
+    ; FUNCTION:
+    ;   if <new_branch> already exists at origin:
+    ;       create a local branch tracking the remote one.
+    ; if it does not:
+    ;   create <new_branch> at origin
     ;   and a local one tracking the remote one.
-    ; switch to the new branch
     ; start dev-ing
+    ; TBI MAYBE?:
+    ;   if branch exists locally check it out
+    ;   and print status?
     dev = "!dev() {\
         newbranch=$1;\
         frombranch=$2;\
