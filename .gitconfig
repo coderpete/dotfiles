@@ -32,18 +32,15 @@
     ; `git dev` - a shortcut to your dev branch.
     ;
     ; USAGE:
-    ;   git dev <new_branch> [branch_from | default:master]
+    ; git dev <new_branch> [branch_from | default:master]
     ;
     ; FUNCTION:
-    ;   if <new_branch> already exists at origin:
-    ;       create a local branch tracking the remote one.
+    ; if <new_branch> already exists at origin:
+    ;   create a local branch tracking the remote one.
     ; if it does not:
     ;   create <new_branch> at origin
     ;   and a local one tracking the remote one.
     ; start dev-ing
-    ; TBI MAYBE?:
-    ;   if branch exists locally check it out
-    ;   and print status?
     dev = "!dev() {\
         newbranch=$1;\
         frombranch=$2;\
@@ -54,7 +51,10 @@
             && echo "" && exit 1;\
         haslocal=$(git branch | grep $newbranch | wc -l);\
         [ $haslocal != "0" ]\
+            && git branch\
             && echo "" && echo \"You already have a local branch matching the name $newbranch!\"\
+            && echo "" && echo \"How about I check it out for you?\"\
+            && git checkout $newbranch && git status\
             && echo "" && exit 1;\
         \
         echo "" && echo \"git fetch...\" && git fetch;\
