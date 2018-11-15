@@ -53,8 +53,9 @@
         [ $haslocal != "0" ]\
             && git branch\
             && echo "" && echo \"You already have a local branch matching the name $newbranch!\"\
-            && echo "" && echo \"How about I check it out for you?\"\
-            && git checkout $newbranch && git status\
+            && echo \"How about I check it out for you?\"\
+            && echo "" && \"git checkout...\" && echo "" && git checkout $newbranch\
+            && echo "" && \"git status...\" && echo "" &&git status\
             && echo "" && exit 1;\
         \
         echo "" && echo \"git fetch...\" && git fetch;\
