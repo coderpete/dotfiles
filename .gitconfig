@@ -52,51 +52,51 @@
         [ -z $frombranch ] && frombranch='master';\
         \
         [ -z $newbranch ]\
-            && echo "" && echo -e \"${R}Specify branch name!${N}\"\
-            && echo -e \"${Y}USAGE: git dev <new_branch> [branch_from | default:master]${N}\"\
-            && echo "" && exit 1;\
+            && printf \"\\n${R}Specify branch name!${N}\\n\"\
+            && printf \"\\n${Y}USAGE: git dev <new_branch> [branch_from | default:master]${N}\\n\"\
+            && printf \"\\n\" && exit 1;\
         \
-        echo "" && echo -e \"${B}git fetch...${N}\" && git fetch;\
-        echo "" && echo -e \"${Y}Checking if branch $newbranch already exists on remote${N}\";\
-        echo "" && echo -e \"${B}git ls-remote --heads origin $newbranch$ ...{N}\";\
-        echo "";\
+        printf \"\\n${B}git fetch...${N}\\n\" && git fetch;\
+        printf \"\\n${Y}Checking if branch $newbranch already exists on remote${N}\\n\";\
+        printf \"\\n${B}git ls-remote --heads origin $newbranch$ ...${N}\\n\";\
+        printf \"\\n\";\
         alreadythere=$(git ls-remote --heads origin $newbranch);\
         \
         [ -z \"$alreadythere\" ]\
-            && echo -e \"${Y}Branch ${newbranch} does not exist at origin. Creating one from ${frombranch}\"\
-            && echo -e "" && echo -e \"${B}git checkout $frombranch ...${N}\"\
+            && printf \"\\n${Y}Branch ${newbranch} does not exist at origin. Creating one from ${frombranch}\\n\"\
+            && printf \"\\n${B}git checkout $frombranch ...${N}\\n\"\
             && git checkout $frombranch\
             \
-            && echo -e "" && echo -e \"${Y}Updating $frombranch\"\
-            && echo -e "" && echo -e \"${B}git pull --rebase ...${N}\"\
+            && printf \"\\n${Y}Updating $frombranch\\n\"\
+            && printf \"\\n${B}git pull --rebase ...${N}\\n\"\
             && git pull --rebase\
             \
-            && echo -e "" && echo -e \"${Y}Branching into $newbranch from $frombranch\"\
-            && echo -e "" && echo -e \"${B}git checkout -b $newbranch ...${N}\"\
+            && printf \"\\n${Y}Branching into $newbranch from $frombranch\\n\"\
+            && printf \"\\n${B}git checkout -b $newbranch ...${N}\\n\"\
             && git checkout -b $newbranch\
             \
-            && echo -e "" && echo -e \"${Y}Creating $newbranch on remote\"\
-            && echo -e "" && echo -e \"${B}git push origin $newbranch ...${N}\"\
+            && printf \"\\n${Y}Creating $newbranch on remote\\n\"\
+            && printf \"\\n${B}git push origin $newbranch ...${N}\\n\"\
             && git push origin $newbranch\
             \
-            && echo -e "" && echo -e \"${Y}Setting $newbranch to track remote\"\
-            && echo -e "" && echo -e \"${B}git branch -u origin/$newbranch ...${N}\"\
+            && printf \"\\n${Y}Setting $newbranch to track remote\\n\"\
+            && printf \"\\n${B}git branch -u origin/$newbranch ...${N}\\n\"\
             && git branch -u origin/$newbranch\
-            && echo -e "" && echo -e \"${G}You are tracking a BRAND NEW origin/$newbranch which branched from origin/$frombranch\"\
-            && echo -e "" && echo -e \"Do your DEVest!${N}\"\
-            && echo -e "" && exit 0;\
+            && printf \"\\n${G}You are tracking a BRAND NEW origin/$newbranch which branched from origin/$frombranch\\n\"\
+            && printf \"\\nDo your DEVest!${N}\\n\"\
+            && printf \"\\n\" && exit 0;\
         \
         [ -n \"$alreadythere\" ]\
-            && echo -e \"${Y}Branch ${newbranch} already exists at origin.\"\
-            && echo -e \"Branching and tracking from origin/$newbranch\"\
-            && echo -e "" && echo -e \"${B}git branch $newbranch --track origin/$newbranch ...{$N}\"\
+            && printf \"\\n${Y}Branch ${newbranch} already exists at origin.\\n\"\
+            && printf \"\\nBranching and tracking from origin/$newbranch\\n\"\
+            && printf \"\\n${B}git branch $newbranch --track origin/$newbranch ...${N}\\n\"\
             && git branch $newbranch --track origin/$newbranch\
-            && echo -e "" && echo -e \"${Y}Checking out $newbranch${N}\"\
-            && echo -e "" && echo -e \"${B}git checkout $newbranch ...${N}\"\
+            && printf \"\\n${Y}Checking out $newbranch${N}\\n\"\
+            && printf \"\\n${B}git checkout $newbranch ...${N}\\n\"\
             && git checkout $newbranch\
-            && echo -e "" && echo -e \"${G}You are on a NEW LOCAL BRANCH tracking an ALREADY EXISTING origin/$newbranch\"\
-            && echo -e "" && echo -e \"Do your DEVest!${N}\"\
-            && echo -e "" && exit 0;\
+            && printf \"\\n${G}You are on a NEW LOCAL BRANCH tracking an ALREADY EXISTING origin/$newbranch\\n\"\
+            && printf \"\\nDo your DEVest!${N}\\n\"\
+            && printf \"\\n\" && exit 0;\
         \
     };\
     dev"
