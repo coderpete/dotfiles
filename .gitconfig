@@ -98,11 +98,15 @@
         printf \"${B}git rev-parse --verify '${newbranch}' ...${N}\\n\";\
         git rev-parse --verify \"${newbranch}\";\
         [ \"$?\" == \"0\" ]\
+            && printf \"${R}Found local branch '${newbranch}'${N}\\n\"\
+            && printf \"\\n${Y}Switching to local branch '${newbranch}'${N}\\n\"\
+            && printf \"${B}git checkout '${newbranch}' ...${N}\\n\"\
+            && git checkout \"${newbranch}\"\
             && printf \"\\n${G}You are now on your ${W}ALREADY EXISTING${G} local branch '${newbranch}'\\n\"\
             && printf \"\\nDo your DEVest!${N}\\n\\n\"\
             && exit 0;\
         \
-        printf \"${R}No local branch '$newbranch' found.${N}\\n\\n\";\
+        printf \"${R}No local branch '${newbranch}' found.${N}\\n\\n\";\
         printf \"\\n${Y}Checking if branch '${newbranch}' exists at origin${N}\\n\";\
         printf \"${B}git fetch ...${N}\\n\" && git fetch;\
         printf \"\\n${B}git ls-remote --heads origin '${newbranch}' ...${N}\\n\";\
