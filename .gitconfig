@@ -36,10 +36,14 @@
         B=\"\\033[1;34m\";\
         N=\"\\033[0m\";\
         G=\"\\033[1;32m\";\
+        R=\"\\033[1;31m\";\
         \
         branch=$1;\
         \
-        printf \"\\n${B}git ls-remote --heads origin '${newbranch}' ...${N}\\n\";\
+        [ \"$branch\" = \"master\" ]\
+            && printf \"\\n\\t${R}NOPE!\\n\\tNot deleting your master branch!\\n\\tARE YOU MAD?!${N}\\n\\n\"\
+            && exit 1;\
+        \
         printf \"\\n${Y}Switching to master${N}\\n\";\
         printf \"${B}git checkout master ...${N}\\n\";\
         git checkout master;\
@@ -86,6 +90,10 @@
         \
         newbranch=$1;\
         frombranch=$2;\
+        \
+        [ \"$newbranch\" = \"master\" ]\
+            && printf \"\\n\\t${R}NOPE!\\n\\tNot messing with master branch!\\n\\tARE YOU MAD?!${N}\\n\\n\"\
+            && exit 1;\
         \
         [ -z $frombranch ] && frombranch='master';\
         \
