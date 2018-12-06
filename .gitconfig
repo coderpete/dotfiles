@@ -50,8 +50,8 @@
         \
         printf \"\\n${Y}Deleting remote branch 'origin/${branch}'${N}\\n\";\
         printf \"\\n\\t${G}PEW! PEW!${N}\\n\";\
-        printf \"\\n${B}git push -d origin '${branch}' ...${N}\\n\";\
-        git push -d origin \"${branch}\";\
+        printf \"\\n${B}git push --delete origin '${branch}' ...${N}\\n\";\
+        git push --delete origin \"${branch}\";\
         \
         printf \"\\n${Y}Deleting local branch '${branch}'${N}\\n\";\
         printf \"\\n\\t${G}PEW! PEW!${N}\\n\";\
