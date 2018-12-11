@@ -110,7 +110,7 @@
             && printf \"\\n${Y}Switching to local branch '${newbranch}'${N}\\n\"\
             && printf \"${B}git checkout '${newbranch}' ...${N}\\n\"\
             && git checkout \"${newbranch}\"\
-            && printf \"\\n${G}You are now on your ${W}ALREADY EXISTING${G} local branch '${newbranch}'\\n\"\
+            && printf \"\\n${G}You are now on your ${W}ALREADY EXISTING LOCAL BRANCH${G} '${newbranch}'\\n\"\
             && printf \"\\nDo your DEVest!${N}\\n\\n\"\
             && exit 0;\
         \
