@@ -1,0 +1,103 @@
+[alias]
+    ; shortcuts
+    ci = commit
+    co = checkout
+    br = branch
+    st = status
+
+    ; `git dev` - a shortcut to your dev branch.
+    ;
+    ; USAGE:
+    ; git dev <new_branch> [branch_from | default:master]
+    ;
+    ; FUNCTION:
+    ; if <new_branch> already exists locally:
+    ;   switch to the local branch.
+    ; if <new_branch> already exists at origin:
+    ;   create a local branch tracking the remote one.
+    ; if it does not:
+    ;   create <new_branch> at origin
+    ;   and a local one tracking the remote one.
+    ; start dev-ing
+    dev = "!dev() {\
+        R=\"\\033[1;31m\";\
+        G=\"\\033[1;32m\";\
+        Y=\"\\033[1;33m\";\
+        B=\"\\033[1;34m\";\
+        W=\"\\033[1;37m\";\
+        N=\"\\033[0m\";\
+        \
+        newbranch=$1;\
+        frombranch=$2;\
+        \
+        [ \"$newbranch\" = \"master\" ]\
+            && printf \"\\n\\t${R}NOPE!\\n\\tNot messing with master branch!\\n\\tARE YOU MAD?!${N}\\n\\n\"\
+            && exit 1;\
+        \
+        [ -z $frombranch ] && frombranch='master';\
+        \
+        [ -z $newbranch ]\
+            && printf \"\\n${R}Specify branch name!${N}\\n\"\
+            && printf \"\\n${Y}USAGE: git dev '<new_branch>' [branch_from | default:master]${N}\\n\"\
+            && printf \"\\n\" && exit 1;\
+        \
+        printf \"\\n${Y}Checking if branch '${newbranch}' already exists locally${N}\\n\";\
+        printf \"${B}git rev-parse --verify '${newbranch}' ...${N}\\n\";\
+        git rev-parse --verify \"${newbranch}\";\
+        [ \"$?\" == \"0\" ]\
+            && printf \"${R}Found local branch '${newbranch}'${N}\\n\"\
+            && printf \"\\n${Y}Switching to local branch '${newbranch}'${N}\\n\"\
+            && printf \"${B}git checkout '${newbranch}' ...${N}\\n\"\
+            && git checkout \"${newbranch}\"\
+            && printf \"\\n${G}You are now on your ${W}ALREADY EXISTING LOCAL BRANCH${G} '${newbranch}'\\n\"\
+            && printf \"\\nDo your DEVest!${N}\\n\\n\"\
+            && exit 0;\
+        \
+        printf \"${R}No local branch '${newbranch}' found.${N}\\n\\n\";\
+        printf \"\\n${Y}Checking if branch '${newbranch}' exists at origin${N}\\n\";\
+        printf \"${B}git fetch ...${N}\\n\" && git fetch;\
+        printf \"\\n${B}git ls-remote --heads origin '${newbranch}' ...${N}\\n\";\
+        alreadythere=$(git ls-remote --heads origin ${newbranch});\
+        \
+        [ -z \"$alreadythere\" ]\
+            && printf \"${R}No remote branch '${newbranch}' found at origin${N}\\n\"\
+            && printf \"\\n${Y}Creating '${newbranch}' locally and at origin by branching from '${frombranch}'${N}\\n\"\
+            && printf \"${B}git checkout '${frombranch}' ...${N}\\n\"\
+            && git checkout \"${frombranch}\"\
+            \
+            && printf \"\\n${Y}Updating '${frombranch}'\\n\"\
+            && printf \"${B}git pull --rebase ...${N}\\n\"\
+            && git pull --rebase\
+            \
+            && printf \"\\n${Y}Branching into '${newbranch}' from '${frombranch}'\\n\"\
+            && printf \"${B}git checkout -b '${newbranch}' ...${N}\\n\"\
+            && git checkout -b \"${newbranch}\"\
+            \
+            && printf \"\\n${Y}Creating '${newbranch}' on remote\\n\"\
+            && printf \"${B}git push origin '${newbranch}' ...${N}\\n\"\
+            && git push origin \"${newbranch}\"\
+            \
+            && printf \"\\n${Y}Setting '${newbranch}' to track remote\\n\"\
+            && printf \"${B}git branch -u 'origin/${newbranch}' ...${N}\\n\"\
+            && git branch -u \"origin/${newbranch}\"\
+            && printf \"\\n${G}You are now on your ${W}BRAND NEW LOCAL BRANCH${G} '${newbranch}'\\n\"\
+            && printf \"\\twhich is tracking a ${W}BRAND NEW${G} 'origin/${newbranch}'\\n\"\
+            && printf \"\\t\\twhich was ${W}BRANCHED FROM${G} 'origin/${frombranch}'\\n\"\
+            && printf \"\\nDo your DEVest!${N}\\n\\n\"\
+            && exit 0;\
+        \
+        [ -n \"$alreadythere\" ]\
+            && printf \"\\n${Y}Branch '${newbranch}' already exists at origin.\\n\"\
+            && printf \"\\nBranching and tracking from 'origin/${newbranch}'\\n\"\
+            && printf \"${B}git branch '${newbranch}' --track 'origin/${newbranch}' ...${N}\\n\"\
+            && git branch $newbranch --track \"origin/${newbranch}\"\
+            && printf \"\\n${Y}Checking out '${newbranch}'${N}\\n\"\
+            && printf \"\\n${B}git checkout '${newbranch}' ...${N}\\n\"\
+            && git checkout \"${newbranch}\"\
+            && printf \"\\n${G}You are now on your ${W}BRAND NEW LOCAL BRANCH${G} '${newbranch}'\\n\"\
+            && printf \"\\twhich is tracking an ${W}ALREADY EXISTING${G} 'origin/${newbranch}'\\n\"\
+            && printf \"\\nDo your DEVest!${N}\\n\\n\"\
+            && exit 0;\
+        \
+    };\
+    dev"
