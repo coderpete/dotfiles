@@ -1,0 +1,93 @@
+## aliases
+alias edit='vim -N -O'
+alias murder='kill -9'
+
+if [ "$(uname)" == "Darwin" ]; then
+    alias ll='ls -laG'
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    alias ll='ls -la --color=auto'
+fi
+
+## places
+alias ndn='cd ~/git/ndn/perl';
+alias remix='cd ~/git/remix-theme-editor';
+alias dpsignup='cd ~/git/signup-js';
+alias signup='cd ~/git/ndn-signup/ndn/signup';
+alias guten="cd ~/git/gutenberg-remixer-blocks/";
+
+## ssh stuff
+#### identity
+alias ssh-ident="eval `ssh-agent -s` && ssh-add";
+eval `ssh-agent -s`
+ssh-add ~/.ssh/github_rsa
+ssh-add ~/.ssh/plex_rsa
+ssh-add ~/.ssh/dhc_inst.pem
+
+#### machines
+alias yakko='ssh petec@yakko.sd.dreamhost.com'
+alias tarfu='ssh petec@tarfu.dreamhost.com'
+alias fubar='tarfu'
+alias regor='ssh coderpete@regor.dreamhost.com'
+alias plex='ssh coderpete@plex.coderpete.io'
+alias spacedock='ssh coderpete@alphasite.edolnx.net -p 2204'
+
+## dhc instances
+alias hoth='ssh -i ~/.ssh/dhc_inst.pem ubuntu@208.113.130.155'
+alias chd='mosh dhc-user@208.113.176.173'
+alias trusty='ssh dhc-user@208.113.176.16'
+alias qnapapi='mosh dhc-user@208.113.176.89'
+
+
+## Arrow key history autocomplete
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+## Shorthands
+alias grephistory='history | grep'
+
+## prompt
+PS1='[\u@\h:\w]$ '
+#PS1='\[\033[01;31m\]\u\[\033[00m\]\[\033[01;32m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[01;31m\]\$\[\033[00m\] \[\033[01;33m\]\]\]\]\]\]\]\]\]\]'
+
+## mybins
+export PATH=/usr/local/bin:${HOME}/bin:/usr/local/mysql/bin:${HOME}/src/sh:${HOME}/git/ndn/bin:${PATH}
+
+## OSX
+if [ $(uname -s) = 'Darwin' ]; then
+    # unfuck pip
+    export CFLAGS=-Qunused-arguments
+    export CPPFLAGS=-Qunused-arguments
+    # stop the annoying bouncing icons in the Dock
+    alias nobounce='defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock'
+fi
+
+## vagrant shorthands
+alias vrebuild='vagrant destroy && vagrant up'
+
+## virtualenv stuffs
+export WORKON_HOME=~/VENVS
+#source /usr/local/bin/virtualenvwrapper.sh
+
+## perl stuff
+export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
+alias perl='perl -Mv5.10';
+
+## python stuff
+alias pep8='pycodestyle'
+
+## git stuff
+alias ggrep='git grep -n'
+
+## docker/remixer stuff
+alias dcprep='sudo ifconfig lo0 alias 127.0.0.2 up'
+alias dcroute='sudo route add -host 66.33.205.240 10.5.69.1 && echo "!!!!!! RESTART TUNNELBLICK !!!!!!!"'
+alias dc='docker-compose';
+alias dccheck='ping -c1 66.33.205.240 && ifconfig | grep 127.0.0.2 && echo "ALL GOOD!"';
+alias dcup='dccheck && docker-compose up -d';
+alias dcstart='docker-compose start';
+alias dcstop='docker-compose stop';
+alias dcdown='docker-compose down';
+alias dcl='docker-compose logs';
+alias dclf='docker-compose logs -f';
+alias dstat='docker stats';
+alias wp="docker-compose run --rm wpcli"
