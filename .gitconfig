@@ -148,8 +148,8 @@
             && exit 0;\
         \
         [ -n \"$alreadythere\" ]\
-            && printf \"\\n${Y}Branch '${newbranch}' already exists at origin.\\n\"\
-            && printf \"\\nBranching and tracking from 'origin/${newbranch}'\\n\"\
+            && printf \"\\n${R}Found branch '${newbranch}' at origin.\\n\"\
+            && printf \"\\n${Y}Branching and tracking from 'origin/${newbranch}'\\n\"\
             && printf \"${B}git branch '${newbranch}' --track 'origin/${newbranch}' ...${N}\\n\"\
             && git branch $newbranch --track \"origin/${newbranch}\"\
             && printf \"\\n${Y}Checking out '${newbranch}'${N}\\n\"\

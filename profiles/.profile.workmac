@@ -91,3 +91,14 @@ alias dcl='docker-compose logs';
 alias dclf='docker-compose logs -f';
 alias dstat='docker stats';
 alias wp="docker-compose run --rm wpcli"
+
+## docker LDE stuff
+# first time:
+# make sure you have gitlabs rsa key locally
+# then `ssh git@git.dreamhost.com` (will get kicked out - that's okay)
+# then docker login git.dreamhost.com:5001`
+# after that use:
+alias lde-prod='cd ~/git/ndn && DB_SOURCE=~/git/ndnsecure/etc/db AUTH_SOURCE=~/git/ndnsecure/etc/auth lde prod-up'
+# `lde ports` shows assigned ports.
+# to ssh into the container with ndn
+alias lde-ssh='cd ~/git/ndn && docker exec -it lde501_appserver_1 /bin/bash'
