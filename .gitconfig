@@ -120,6 +120,43 @@
         printf \"\\n${B}git ls-remote --heads origin '${newbranch}' ...${N}\\n\";\
         alreadythere=$(git ls-remote --heads origin ${newbranch});\
         \
+        [ -n \"$alreadythere\" ]\
+            && printf \"\\n${R}Found branch '${newbranch}' at origin.\\n\"\
+            && printf \"\\n${Y}Branching and tracking from 'origin/${newbranch}'\\n\"\
+            && printf \"${B}git branch '${newbranch}' --track 'origin/${newbranch}' ...${N}\\n\"\
+            && git branch $newbranch --track \"origin/${newbranch}\"\
+            && printf \"\\n${Y}Checking out '${newbranch}'${N}\\n\"\
+            && printf \"\\n${B}git checkout '${newbranch}' ...${N}\\n\"\
+            && git checkout \"${newbranch}\"\
+            && printf \"\\n${G}You are now on your ${W}BRAND NEW LOCAL BRANCH${G} '${newbranch}'\\n\"\
+            && printf \"\\twhich is tracking an ${W}ALREADY EXISTING${G} 'origin/${newbranch}'\\n\"\
+            && printf \"\\nDo your DEVest!${N}\\n\\n\"\
+            && exit 0;\
+        \
+        [ -z \"$alreadythere\" ]\
+            && printf \"${R}No remote branch '${newbranch}' found at origin${N}\\n\"\
+            && printf \"\\n${Y}Creating '${newbranch}' locally and at origin by branching from '${frombranch}'${N}\\n\"\
+            && printf \"${B}git checkout '${frombranch}' ...${N}\\n\"\
+            && git checkout \"${frombranch}\"\
+            \
+            && printf \"\\n${Y}Updating '${frombranch}'\\n\"\
+            && printf \"${B}git pull --rebase ...${N}\\n\"\
+            && git pull --rebase\
+            \
+            && printf \"\\n${Y}Checking '${frombranch}' for local commits ahead of origin ...${N}\\n\"\
+            && printf \"${B}git rev-list --left-right --boundary @{u}...${N}\\n\"\
+            && ahead=$(git rev-list --left-right --boundary @{u}...);\
+        \
+        [ -z \"$ahead\" ]\
+            && printf \"\\n${Y}All good.${N}\\n\";\
+        \
+        [ -n \"$ahead\" ]\
+            && printf \"${R}Your local '${frombranch} has unpushed commits.\\n\"\
+            && printf \"Resolve the conflict by either:\\n\"\
+            && printf \"    1. Pushing your local changes to the tracked branch at origin, or\\n\"\
+            && printf \"    2. Checking out a local copy of the tracked branch from origin under a different name.\\n\"\
+            && exit 1;\
+        \
         [ -z \"$alreadythere\" ]\
             && printf \"${R}No remote branch '${newbranch}' found at origin${N}\\n\"\
             && printf \"\\n${Y}Creating '${newbranch}' locally and at origin by branching from '${frombranch}'${N}\\n\"\
@@ -144,19 +181,6 @@
             && printf \"\\n${G}You are now on your ${W}BRAND NEW LOCAL BRANCH${G} '${newbranch}'\\n\"\
             && printf \"\\twhich is tracking a ${W}BRAND NEW${G} 'origin/${newbranch}'\\n\"\
             && printf \"\\t\\twhich was ${W}BRANCHED FROM${G} 'origin/${frombranch}'\\n\"\
-            && printf \"\\nDo your DEVest!${N}\\n\\n\"\
-            && exit 0;\
-        \
-        [ -n \"$alreadythere\" ]\
-            && printf \"\\n${R}Found branch '${newbranch}' at origin.\\n\"\
-            && printf \"\\n${Y}Branching and tracking from 'origin/${newbranch}'\\n\"\
-            && printf \"${B}git branch '${newbranch}' --track 'origin/${newbranch}' ...${N}\\n\"\
-            && git branch $newbranch --track \"origin/${newbranch}\"\
-            && printf \"\\n${Y}Checking out '${newbranch}'${N}\\n\"\
-            && printf \"\\n${B}git checkout '${newbranch}' ...${N}\\n\"\
-            && git checkout \"${newbranch}\"\
-            && printf \"\\n${G}You are now on your ${W}BRAND NEW LOCAL BRANCH${G} '${newbranch}'\\n\"\
-            && printf \"\\twhich is tracking an ${W}ALREADY EXISTING${G} 'origin/${newbranch}'\\n\"\
             && printf \"\\nDo your DEVest!${N}\\n\\n\"\
             && exit 0;\
         \
