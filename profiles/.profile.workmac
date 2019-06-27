@@ -30,6 +30,7 @@ alias fubar='tarfu'
 alias regor='ssh coderpete@regor.dreamhost.com'
 alias plex='ssh coderpete@plex.coderpete.io'
 alias spacedock='ssh coderpete@alphasite.edolnx.net -p 2204'
+alias wp='ssh coderpeteps@ps410159.dreamhost.com'
 
 ## dhc instances
 alias hoth='ssh -i ~/.ssh/dhc_inst.pem ubuntu@208.113.130.155'
