@@ -143,7 +143,7 @@
             && git branch -u \"origin/${newbranch}\"\
             && printf \"\\n${G}You are now on your ${W}BRAND NEW LOCAL BRANCH${G} '${newbranch}'\\n\"\
             && printf \"\\twhich is tracking a ${W}BRAND NEW${G} 'origin/${newbranch}'\\n\"\
-            && printf \"\\t\\twhich was ${W}BRANCHED FROM${G} 'origin/${frombranch}'\\n\"\
+            && printf \"\\t\\twhich was ${W}BRANCHED FROM YOUR LOCAL${G} '${frombranch}'\\n\"\
             && printf \"\\nDo your DEVest!${N}\\n\\n\"\
             && exit 0;\
         \
