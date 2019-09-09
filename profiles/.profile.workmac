@@ -78,6 +78,7 @@ alias pep8='pycodestyle'
 
 ## git stuff
 alias ggrep='git grep -n'
+alias gsf='git diff --color | diff-so-fancy'
 
 ## docker/remixer stuff
 alias dcprep='sudo ifconfig lo0 alias 127.0.0.2 up'
