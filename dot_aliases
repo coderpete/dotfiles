@@ -1,0 +1,62 @@
+alias edit="vim -N"
+
+## perl stuff
+export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
+alias perl='perl -Mv5.10';
+
+## python stuff
+alias pep8='pycodestyle'
+
+## git stuff
+alias ggrep='git grep -n'
+alias gsf='git diff --color | diff-so-fancy'
+
+## docker/remixer stuff
+alias dcprep='sudo ifconfig lo0 alias 127.0.0.2 up'
+alias dcroute='sudo route add -host 66.33.205.240 10.5.69.1 && echo "!!!!!! RESTART TUNNELBLICK !!!!!!!"'
+alias dc='docker-compose';
+alias dccheck='ping -c1 66.33.205.240 && ifconfig | grep 127.0.0.2 && echo "ALL GOOD!"';
+alias dcup='dccheck && docker-compose up -d';
+alias dcstart='docker-compose start';
+alias dcstop='docker-compose stop';
+alias dcdown='docker-compose down';
+alias dcl='docker-compose logs';
+alias dclf='docker-compose logs -f';
+alias dstat='docker stats';
+alias wp="docker-compose run --rm wpcli"
+
+## docker LDE stuff
+# first time:
+# make sure you have gitlabs rsa key locally
+# then `ssh git@git.dreamhost.com` (will get kicked out - that's okay)
+# then docker login git.dreamhost.com:5001`
+# after that use:
+alias lde-prod='cd ~/git/ndn && DB_SOURCE=~/git/ndnsecure/etc/db AUTH_SOURCE=~/git/ndnsecure/etc/auth lde prod-up'
+# `lde ports` shows assigned ports.
+# to ssh into the container with ndn
+alias lde-ssh='cd ~/git/ndn && docker exec -it lde501_appserver_1 /bin/bash'
+## places
+alias ndn='cd ~/git/ndn/perl';
+alias remix='cd ~/git/remix-theme-editor';
+alias dpsignup='cd ~/git/signup-js';
+alias signup='cd ~/git/ndn-signup/ndn/signup';
+alias guten="cd ~/git/gutenberg-remixer-blocks/";
+
+#### machines
+alias yakko='ssh petec@yakko.sd.dreamhost.com'
+alias tarfu='ssh petec@tarfu.dreamhost.com'
+alias fubar='tarfu'
+alias regor='ssh coderpete@regor.dreamhost.com'
+alias plex='ssh coderpete@plex.coderpete.io'
+alias spacedock='ssh coderpete@alphasite.edolnx.net -p 2204'
+alias wp='ssh coderpeteps@ps410159.dreamhost.com'
+
+## dhc instances
+alias hoth='ssh -i ~/.ssh/dhc_inst.pem ubuntu@208.113.130.155'
+alias chd='mosh dhc-user@208.113.176.173'
+alias trusty='ssh dhc-user@208.113.176.16'
+alias qnapapi='mosh dhc-user@208.113.176.89'
+
+## ssh stuff
+#### identity
+alias ssh-ident="eval `ssh-agent -s` && ssh-add";
