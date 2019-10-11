@@ -110,11 +110,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $HOME/.aliasrc
+# TODO: make this a plugin
+[ -f ~/.aliasrc ] && source ~/.aliasrc
 
 ## ssh stuff
 #### identity
-eval `ssh-agent -s`
-[ -f ~/.ssh/github_rsa ] && ssh-add ~/.ssh/github_rsa
-[ -f ~/.ssh/plex_rsa ] && ssh-add ~/.ssh/plex_rsa
-[ -f ~/.ssh/dhc_inst.pem ] && ssh-add ~/.ssh/dhc_inst.pem
+eval `ssh-agent -s` &>! /dev/null
+# TODO: make this a loop
+# TODO: make this a plugin
+[ -f ~/.ssh/github_rsa ] && ssh-add ~/.ssh/github_rsa &>! /dev/null
+[ -f ~/.ssh/plex_rsa ] && ssh-add ~/.ssh/plex_rsa &>! /dev/null
+[ -f ~/.ssh/dhc_inst.pem ] && ssh-add ~/.ssh/dhc_inst.pem &>! /dev/null
