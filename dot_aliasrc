@@ -1,5 +1,11 @@
 alias edit="vim -N"
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ll='ls -lha'
+else
+    alias ll='ls -la --color=auto'
+fi
+
 ## perl stuff
 export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
 alias perl='perl -Mv5.10';
