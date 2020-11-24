@@ -13,6 +13,8 @@ if [[ "$(hostname)" == "tarfu" ]]; then
     ZSH_THEME="coderpete-tarfu"
 elif [[ "$(hostname)" == "yakko" ]]; then
     ZSH_THEME="coderpete-yakko"
+elif [[ "$(hostname)" == "vulcan" ]]; then
+    ZSH_THEME="coderpete-vulcan"
 else
     ZSH_THEME="coderpete"
 fi
