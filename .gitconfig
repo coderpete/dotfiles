@@ -1,6 +1,6 @@
 [user]
     name = Pete Chudykowski
-    email = pete.chudykowski@dreamhost.com
+    email = pete.chudykowski@thirtymadison.com
 
 [core]
     ; text-editor
@@ -77,7 +77,7 @@
     ; `git dev` - a shortcut to your dev branch.
     ;
     ; USAGE:
-    ; git dev <new_branch> [branch_from | default:master]
+    ; git dev <new_branch> [branch_from | default:main]
     ;
     ; FUNCTION:
     ; if <new_branch> already exists locally:
@@ -99,15 +99,15 @@
         newbranch=$1;\
         frombranch=$2;\
         \
-        [ \"$newbranch\" = \"master\" ]\
+        [ \"$newbranch\" = \"main\" ]\
             && printf \"\\n\\t${R}NOPE!\\n\\tNot messing with master branch!\\n\\tARE YOU MAD?!${N}\\n\\n\"\
             && exit 1;\
         \
-        [ -z $frombranch ] && frombranch='master';\
+        [ -z $frombranch ] && frombranch='main';\
         \
         [ -z $newbranch ]\
             && printf \"\\n${R}Specify branch name!${N}\\n\"\
-            && printf \"\\n${Y}USAGE: git dev '<new_branch>' [branch_from | default:master]${N}\\n\"\
+            && printf \"\\n${Y}USAGE: git dev '<new_branch>' [branch_from | default:main]${N}\\n\"\
             && printf \"\\n\" && exit 1;\
         \
         printf \"\\n${Y}Checking if branch '${newbranch}' already exists locally${N}\\n\";\

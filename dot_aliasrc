@@ -7,8 +7,8 @@ else
 fi
 
 ## perl stuff
-export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
-alias perl='perl -Mv5.10';
+#export PERL5LIB=${HOME}/git/ndn/perl:${PERL5LIB}
+#alias perl='perl -Mv5.10';
 
 ## python stuff
 alias pep8='pycodestyle'
@@ -42,7 +42,7 @@ alias lde-prod='cd ~/git/ndn && DB_SOURCE=~/git/ndnsecure/etc/db AUTH_SOURCE=~/g
 # to ssh into the container with ndn
 alias lde-ssh='cd ~/git/ndn && docker exec -it lde501_appserver_1 /bin/bash'
 ## places
-alias ndn='cd ~/git/ndn/perl';
+alias tm='cd ~/git/tm';
 alias remix='cd ~/git/remix-theme-editor';
 alias dpsignup='cd ~/git/signup-js';
 alias signup='cd ~/git/ndn-signup/ndn/signup';
@@ -66,3 +66,7 @@ alias qnapapi='mosh dhc-user@208.113.176.89'
 ## ssh stuff
 #### identity
 alias ssh-ident="eval `ssh-agent -s` && ssh-add";
+
+# alias x86 roseta homebrew
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
+

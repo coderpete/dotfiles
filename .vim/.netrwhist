@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/coderpete/git/tm/media-service/prisma'
 let g:netrw_dirhist_4='/Users/coderpete/git/ndn/perl/Ndn/Billing/Product/Dreamhost'
 let g:netrw_dirhist_3='/Users/coderpete/git/ndn/perl/Ndn/Billing/Product'
 let g:netrw_dirhist_2='/Users/coderpete/git/ndn/perl/Ndn/PSGI'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_9='/Users/coderpete/git/ndn/perl/Ndn/PSGI/Service'
 let g:netrw_dirhist_8='/Users/coderpete/git/ndn/perl/Ndn/PSGI'
 let g:netrw_dirhist_7='/Users/coderpete/learn/node/vidly/routes'
 let g:netrw_dirhist_6='/Users/coderpete/learn/node/vidly'
-let g:netrw_dirhist_5='/Users/coderpete/learn/node/vidly/config'
